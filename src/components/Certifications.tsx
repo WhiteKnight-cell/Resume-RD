@@ -7,14 +7,9 @@ import { FiAward, FiExternalLink, FiCalendar } from "react-icons/fi";
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="section-padding relative">
+    <section id="certifications" className="min-h-screen flex items-center section-padding relative">
       <div className="container-width">
         <AnimatedSection>
-          <div className="inline-block mb-2">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ cat /home/ryan/certifications.md
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             <span className="text-gradient">Certifications</span>
           </h2>

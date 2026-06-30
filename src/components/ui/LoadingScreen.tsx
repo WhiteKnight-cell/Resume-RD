@@ -32,20 +32,6 @@ export default function LoadingScreen() {
               className="absolute inset-2 w-12 h-12 border-2 border-transparent border-b-primary border-l-secondary rounded-full"
             />
           </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6 text-text-muted font-mono text-sm"
-          >
-            <span className="text-primary">$</span> loading portfolio
-            <motion.span
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              ...
-            </motion.span>
-          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>

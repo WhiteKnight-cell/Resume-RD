@@ -22,14 +22,9 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="section-padding relative bg-dark-800/50">
+    <section id="projects" className="min-h-screen flex items-center section-padding relative bg-dark-800/50">
       <div className="container-width">
         <AnimatedSection>
-          <div className="inline-block mb-2">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ ls ~/projects/
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Featured <span className="text-gradient">Projects</span>
           </h2>
@@ -74,13 +69,13 @@ export default function Projects() {
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 text-[10px] font-mono rounded bg-dark-700/80 border border-primary/10 text-primary"
+                          className="px-2 py-0.5 text-[10px] rounded bg-dark-700/80 border border-primary/10 text-primary"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-dark-700/80 border border-primary/10 text-text-muted">
+                        <span className="px-2 py-0.5 text-[10px] rounded bg-dark-700/80 border border-primary/10 text-text-muted">
                           +{project.technologies.length - 3}
                         </span>
                       )}

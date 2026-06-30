@@ -46,14 +46,9 @@ export default function Skills() {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <section id="skills" className="section-padding relative">
+    <section id="skills" className="min-h-screen flex items-center section-padding relative">
       <div className="container-width">
         <AnimatedSection>
-          <div className="inline-block mb-2">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ cat /home/ryan/skills.txt
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Technical <span className="text-gradient">Skills</span>
           </h2>
@@ -107,7 +102,7 @@ export default function Skills() {
                           </div>
                           <div>
                             <h4 className="text-white font-medium text-sm">{skill.name}</h4>
-                            <span className="text-xs text-text-muted font-mono">{skill.level}%</span>
+                            <span className="text-xs text-text-muted">{skill.level}%</span>
                           </div>
                         </div>
                         <div className="relative h-2 rounded-full bg-dark-600 overflow-hidden">

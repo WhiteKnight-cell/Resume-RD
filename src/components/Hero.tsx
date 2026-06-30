@@ -2,8 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiDownload, FiMail, FiExternalLink } from "react-icons/fi";
+import { FiMail, FiExternalLink } from "react-icons/fi";
 import { personalInfo } from "@/data/portfolio";
+
+type Section =
+  | "hero"
+  | "about"
+  | "education"
+  | "skills"
+  | "projects"
+  | "certifications"
+  | "experience"
+  | "contact";
 
 const typingPhrases = [
   "Building the future, one line of code at a time",
@@ -12,16 +22,11 @@ const typingPhrases = [
   "Turning ideas into digital solutions",
 ];
 
-const techIcons = [
-  { icon: "</>", label: "HTML", x: 10, y: 20, size: 24 },
-  { icon: "{}", label: "JS", x: 85, y: 15, size: 20 },
-  { icon: "#", label: "C#", x: 90, y: 70, size: 22 },
-  { icon: "SQL", label: "SQL", x: 5, y: 75, size: 18 },
-  { icon: "⚛", label: "React", x: 50, y: 5, size: 28 },
-  { icon: "🔷", label: "TS", x: 50, y: 90, size: 26 },
-];
+interface HeroProps {
+  onSectionChange: (section: Section) => void;
+}
 
-export default function Hero() {
+export default function Hero({ onSectionChange }: HeroProps) {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -55,10 +60,6 @@ export default function Hero() {
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, phraseIndex]);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="hero"
@@ -66,36 +67,11 @@ export default function Hero() {
     >
       <div className="absolute inset-0 grid-bg opacity-50" />
 
-      {techIcons.map((item, i) => (
-        <motion.div
-          key={i}
-          className={`absolute hidden lg:flex items-center justify-center font-mono font-bold text-xs rounded-lg glass px-3 py-1.5 border-primary/10 text-primary/40 hover:text-primary/70 hover:border-primary/30 transition-all cursor-default ${
-            i % 2 === 0 ? "animate-float" : "animate-float-delayed"
-          }`}
-          style={{ left: `${item.x}%`, top: `${item.y}%` }}
-          whileHover={{ scale: 1.2 }}
-        >
-          {item.icon}
-        </motion.div>
-      ))}
-
       <div className="relative z-10 container-width text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-        >
-          <div className="inline-block mb-4">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ cat /home/ryan/intro
-            </span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6"
         >
           <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-6 rounded-full glass border-2 border-primary/30 overflow-hidden flex items-center justify-center">
@@ -108,7 +84,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold mb-3"
         >
           <span className="text-white">{personalInfo.fullName}</span>
@@ -117,7 +93,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-4"
         >
           <span className="text-xl md:text-2xl text-text-muted">
@@ -129,26 +105,23 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-8 h-8"
         >
-          <span className="text-lg md:text-xl text-text-muted font-mono">
-            <span className="text-primary">$</span> echo{" "}
-            <span className="text-secondary">"</span>
+          <span className="text-lg md:text-xl text-text-muted">
             {displayText}
             <span className="text-primary animate-pulse">|</span>
-            <span className="text-secondary">"</span>
           </span>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-4"
         >
           <button
-            onClick={() => scrollTo("projects")}
+            onClick={() => onSectionChange("projects")}
             className="group relative px-6 py-3 rounded-lg bg-primary/10 border border-primary/30 text-primary font-medium overflow-hidden transition-all hover:border-primary hover:glow"
           >
             <span className="relative z-10 flex items-center gap-2">
@@ -156,7 +129,7 @@ export default function Hero() {
             </span>
           </button>
           <button
-            onClick={() => scrollTo("contact")}
+            onClick={() => onSectionChange("contact")}
             className="group relative px-6 py-3 rounded-lg bg-secondary/10 border border-secondary/30 text-secondary font-medium overflow-hidden transition-all hover:border-secondary hover:shadow-[0_0_20px_rgba(124,58,237,0.3)]"
           >
             <span className="relative z-10 flex items-center gap-2">

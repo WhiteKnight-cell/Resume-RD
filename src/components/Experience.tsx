@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { experiences } from "@/data/portfolio";
 import AnimatedSection from "./ui/AnimatedSection";
-import { FiBriefcase, FiCalendar } from "react-icons/fi";
+import { FiCalendar } from "react-icons/fi";
 
 const typeLabels: Record<string, string> = {
   academic: "Academic Project",
@@ -17,14 +17,9 @@ export default function Experience() {
   if (experiences.length === 0) return null;
 
   return (
-    <section id="experience" className="section-padding relative bg-dark-800/50">
+    <section id="experience" className="min-h-screen flex items-center section-padding relative bg-dark-800/50">
       <div className="container-width">
         <AnimatedSection>
-          <div className="inline-block mb-2">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ cat /home/ryan/experience.log
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             <span className="text-gradient">Experience</span>
           </h2>
@@ -44,10 +39,10 @@ export default function Experience() {
                     <p className="text-primary text-sm">{exp.organization}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-primary/10 border border-primary/20 text-primary">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] bg-primary/10 border border-primary/20 text-primary">
                       {typeLabels[exp.type] || exp.type}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-text-muted font-mono">
+                    <span className="flex items-center gap-1 text-xs text-text-muted">
                       <FiCalendar size={11} />
                       {exp.period}
                     </span>

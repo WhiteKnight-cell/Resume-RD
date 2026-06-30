@@ -7,14 +7,9 @@ import { FiBookOpen, FiCalendar } from "react-icons/fi";
 
 export default function Education() {
   return (
-    <section id="education" className="section-padding relative bg-dark-800/50">
+    <section id="education" className="min-h-screen flex items-center section-padding relative bg-dark-800/50">
       <div className="container-width">
         <AnimatedSection>
-          <div className="inline-block mb-2">
-            <span className="glass px-4 py-1.5 rounded-full text-xs font-mono text-primary tracking-wider border border-primary/20">
-              $ cat /home/ryan/education.json
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Education <span className="text-gradient">Timeline</span>
           </h2>
@@ -38,7 +33,7 @@ export default function Education() {
                       <h3 className="text-lg font-semibold text-white">
                         {item.school}
                       </h3>
-                      <span className="flex items-center gap-1.5 text-xs text-text-muted font-mono">
+                      <span className="flex items-center gap-1.5 text-xs text-text-muted">
                         <FiCalendar size={12} />
                         {item.period}
                       </span>

@@ -95,40 +95,13 @@
   background-clip: text;
 }
 
-.border-gradient {
-  border-image: linear-gradient(135deg, #00d4ff, #7c3aed) 1;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 6s ease-in-out 2s infinite;
-}
-
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
 }
 
 @keyframes pulseGlow {
   0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
   50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(124, 58, 237, 0.3); }
-}
-
-.typing-cursor::after {
-  content: "|";
-  animation: blink 1s step-end infinite;
-  color: var(--color-primary);
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
 
 .section-padding {
